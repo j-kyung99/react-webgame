@@ -19,26 +19,42 @@
     <!--<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>-->
     <script type="text/babel">
       'use strict';
-
-      class LikeButton extends React.Component {
-        state = { liked: false };
-
-        onClickButton = () => {
-          this.setState({ liked: true });
-        };
-
-        render() {
-          if (this.state.liked) {
-            return 'You liked this.';
-          }
-
-          return (
-            <button onClick={() => this.setState({ liked: true })}>
-              {this.state.liked ? 'Liked' : 'Like!'}
-            </button>
-          );
+      // 함수 컴포넌트
+      function LikeButton() {
+        const [liked, setLiked] = React.useState(false); // 구조분해
+        if (liked) {
+          return 'You liked this.';
         }
+        return (
+          <button
+            onClick={() => {
+              setLiked(true);
+            }}
+          >
+            Like
+          </button>
+        );
       }
+      // 클래스 컴포넌트
+      // class LikeButton extends React.Component {
+      //   state = { liked: false };
+
+      //   onClickButton = () => {
+      //     this.setState({ liked: true });
+      //   };
+
+      //   render() {
+      //     if (this.state.liked) {
+      //       return 'You liked this.';
+      //     }
+
+      //     return (
+      //       <button onClick={() => this.setState({ liked: true })}>
+      //         {this.state.liked ? 'Liked' : 'Like!'}
+      //       </button>
+      //     );
+      //   }
+      // }
     </script>
     <script type="text/babel">
       //ReactDOM.render(<LikeButton />, document.querySelector('#root')); // React 17버전 코드
